@@ -1,7 +1,7 @@
 # iFormer: [Inception Transformer](http://arxiv.org/abs/2205.12956)
-This is a PyTorch implementation of iFormer proposed by our paper "[Inception Transformer](http://arxiv.org/abs/2205.12956)" 
+This is a PyTorch implementation of iFormer proposed by our paper "[Inception Transformer](http://arxiv.org/abs/2205.12956)".
 
-The code and model will be released soon
+The code and model will be released soon.
 
 
 ## Acknowledgment
