@@ -23,7 +23,7 @@ Fine-tuning Results with larger resolution (384x384) on ImageNet-1K
 
 ## Object Detection and Instance Segmentation
 
-All models are based on Mask R-CNN and trained by 1  training schedule.
+All models are based on Mask R-CNN and trained by 1x  training schedule.
 
 | Backbone  | #Param. | FLOPs | box mAP | mask mAP |
 |:---------:|:-------:|:-----:|:-------:|:--------:|
