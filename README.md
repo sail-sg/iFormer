@@ -7,6 +7,23 @@ This is a PyTorch implementation of iFormer proposed by our paper "[Inception Tr
 ### 1. Requirements
 torch>=1.7.0; torchvision>=0.8.1; timm==0.5.4; fvcore; [apex-amp](https://github.com/NVIDIA/apex) (if you want to use fp16); 
 
+data prepare: ImageNet with the following folder structure, you can extract ImageNet by this [script](https://gist.github.com/BIGBALLON/8a71d225eff18d88e469e6ea9b39cef4).
+
+```
+│imagenet/
+├──train/
+│  ├── n01440764
+│  │   ├── n01440764_10026.JPEG
+│  │   ├── n01440764_10027.JPEG
+│  │   ├── ......
+│  ├── ......
+├──val/
+│  ├── n01440764
+│  │   ├── ILSVRC2012_val_00000293.JPEG
+│  │   ├── ILSVRC2012_val_00002138.JPEG
+│  │   ├── ......
+│  ├── ......
+```
 
 ### Main results on ImageNet-1K
 
