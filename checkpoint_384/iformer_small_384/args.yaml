@@ -1,5 +1,3 @@
-DDP: true
-K: 1024
 aa: rand-m9-mstd0.5-inc1
 amp: false
 apex_amp: false
