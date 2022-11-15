@@ -24,6 +24,32 @@ Fine-tuning Results with larger resolution (384x384) on ImageNet-1K
 | iFormer-B  |   48M     |   30.5G  |   384 |  85.7  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_base_384.pth) |
 | iFormer-L  |   87M     |   45.3G  |   384 |  85.8  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_large_384.pth) |
 
+
+### Training
+
+Train iformer_small on 224
+```bash
+python -m torch.distributed.launch --nproc_per_node=8 train.py /dataset/imagenet \
+--model iformer_small -b 128 --epochs 300 --img-size 224 --drop-path 0.2 --lr 1e-3 \
+--weight-decay 0.05 --aa rand-m9-mstd0.5-inc1 --warmup-lr 1e-6 --warmup-epochs 5 \
+--output checkpoint --min-lr 1e-6 --experiment iformer_small
+```
+
+Finetune on 384 based on the pretrained checkpoint on 224
+```bash
+python -m torch.distributed.launch --nproc_per_node=8 fine-tune.py /dataset/imagenet \
+--model iformer_small_384 -b 64 --lr 1e-5 --min-lr 1e-6 --warmup-lr 2e-8 --warmup-epochs 0 \
+--epochs 20 --img-size 384 --drop-path 0.3 --weight-decay 1e-8 --mixup 0.1 --cutmix 0.1 \
+--cooldown-epochs 10 --aa rand-m9-mstd0.5-inc1 --clip-grad 1.0 --output checkpoint_fine \
+--initial-checkpoint checkpoint/iformer_small/model_best.pth.tar \
+--experiment iformer_small_384
+```
+
+### Validation
+```bash
+python validate.py /dataset/imagenet --model iformer_small  --checkpoint checkpoint/iformer_small/model_best.pth.tar
+```
+
 ## Object Detection and Instance Segmentation
 
 All models are based on Mask R-CNN and trained by 1x  training schedule.
@@ -39,6 +65,17 @@ All models are based on Mask R-CNN and trained by 1x  training schedule.
 |:---------:|---------|:-------:|:-----:|:----:|
 | iFormer-S | FPN     |   24M   |  181G | 48.6 |
 | iFormer-S | Upernet |   49M   |  938G | 48.4 |
+
+## Bibtex
+```
+@inproceedings{
+si2022inception,
+title={Inception Transformer},
+author={Chenyang Si and Weihao Yu and Pan Zhou and Yichen Zhou and Xinchao Wang and Shuicheng YAN},
+booktitle={Advances in Neural Information Processing Systems},
+year={2022}
+}
+```
 
 ## Acknowledgment
 Our implementation is mainly based on the following codebases. We gratefully thank the authors for their wonderful works.
