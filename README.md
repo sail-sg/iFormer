@@ -29,17 +29,17 @@ data prepare: ImageNet with the following folder structure, you can extract Imag
 
 | Model      |  #params  | FLOPs | Image resolution | acc@1| Model |
 | :---       |   :---:   |  :---: |  :---: |  :---:  |  :---:  |
-| iFormer-S  |   20M     |   4.8G  |   224 |  83.4  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_small.pth) |
-| iFormer-B  |   48M     |   9.4G  |   224 |  84.6  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_base.pth) |
-| iFormer-L  |   87M     |   14.0G |   224 |  84.8  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_large.pth) |
+| iFormer-S  |   20M     |   4.8G  |   224 |  83.4  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_small.pth)/[config](https://github.com/sail-sg/iFormer/blob/main/checkpoint/iformer_small/args.yaml)/[log](https://github.com/sail-sg/iFormer/blob/main/checkpoint/iformer_small/summary.csv) |
+| iFormer-B  |   48M     |   9.4G  |   224 |  84.6  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_base.pth)/[config](https://github.com/sail-sg/iFormer/blob/main/checkpoint/iformer_base/args.yaml)/[log](https://github.com/sail-sg/iFormer/blob/main/checkpoint/iformer_base/summary.csv) |
+| iFormer-L  |   87M     |   14.0G |   224 |  84.8  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_large.pth)/[config](https://github.com/sail-sg/iFormer/blob/main/checkpoint/iformer_large/args.yaml)/[log](https://github.com/sail-sg/iFormer/blob/main/checkpoint/iformer_large/summary.csv) |
 
 Fine-tuning Results with larger resolution (384x384) on ImageNet-1K
 
 | Model      |  #params  | FLOPs | Image resolution | acc@1| Model |
 | :---       |   :---:   |  :---: |  :---: |  :---:  |  :---:  |
-| iFormer-S  |   20M     |   16.1G  |   384 |  84.6  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_small_384.pth) |
-| iFormer-B  |   48M     |   30.5G  |   384 |  85.7  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_base_384.pth) |
-| iFormer-L  |   87M     |   45.3G  |   384 |  85.8  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_large_384.pth) |
+| iFormer-S  |   20M     |   16.1G  |   384 |  84.6  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_small_384.pth)/[config](https://github.com/sail-sg/iFormer/blob/main/checkpoint_384/iformer_small_384/args.yaml)/[log](https://github.com/sail-sg/iFormer/blob/main/checkpoint_384/iformer_small_384/summary.csv) |
+| iFormer-B  |   48M     |   30.5G  |   384 |  85.7  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_base_384.pth)/[config](https://github.com/sail-sg/iFormer/blob/main/checkpoint_384/iformer_base_384/args.yaml)/[log](https://github.com/sail-sg/iFormer/blob/main/checkpoint_384/iformer_base_384/summary.csv) |
+| iFormer-L  |   87M     |   45.3G  |   384 |  85.8  | [model](https://huggingface.co/sail/dl2/resolve/main/iformer/iformer_large_384.pth)/[config](https://github.com/sail-sg/iFormer/blob/main/checkpoint_384/iformer_large_384/args.yaml)/[log](https://github.com/sail-sg/iFormer/blob/main/checkpoint_384/iformer_large_384/summary.csv) |
 
 
 ### Training
