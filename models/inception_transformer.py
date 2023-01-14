@@ -29,11 +29,18 @@ import torch.nn.functional as F
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD, IMAGENET_INCEPTION_MEAN, IMAGENET_INCEPTION_STD
 from timm.models.helpers import build_model_with_cfg, named_apply, adapt_input_conv
 from timm.models.layers import PatchEmbed, Mlp, DropPath, trunc_normal_, lecun_normal_
-from timm.models.registry import register_model
 from torch.nn.init import _calculate_fan_in_and_fan_out
 import math
 import warnings
-from timm.models.layers.helpers import to_2tuple
+try:
+    from timm.models import register_model
+except:
+    from timm.models.registry import register_model
+
+try:
+    from timm.layers.helpers import to_2tuple
+except:
+    from timm.models.layers.helpers import to_2tuple
 
 
 _logger = logging.getLogger(__name__)
@@ -361,7 +368,7 @@ class InceptionTransformer(nn.Module):
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
         
         self.patch_embed = FirstPatchEmbed(in_chans=in_chans, embed_dim=embed_dims[0])
-        self.num_patches1 = num_patches = img_size // 4
+        self.num_patches1 = num_patches = 224 // 4
         self.pos_embed1 = nn.Parameter(torch.zeros(1, num_patches, num_patches, embed_dims[0]))
         self.blocks1 = nn.Sequential(*[
             Block(
